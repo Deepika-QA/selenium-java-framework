@@ -1,6 +1,6 @@
 Selenium-Java-Gradle test automation to add a bank account to xero
 ===================
-
+Required : JDK 1.8, Intellij/Eclipse
 ### Steps to follow
  * Open the terminal and go to the location where you want to save this project
  * Copy the link to clone this repo
