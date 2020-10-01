@@ -22,6 +22,10 @@ public class UserStepsDefinition
   private static final String ACC_TYPE = "Everyday (day-to-day)";
   private static final String ACC_NUMBER = "00-0000-0000000-000";
 
+  LoginPage login;
+  UserDashboard userDashboard;
+  BankAccounts bankAccounts;
+
 
   @Before
   public void setUpDriver()
@@ -31,9 +35,6 @@ public class UserStepsDefinition
     driver.manage().window().maximize();
   }
 
-  LoginPage login;
-  UserDashboard userDashboard;
-  BankAccounts bankAccounts;
 
   @Given("^User signed in xero account$")
   public void loginToXeroAccount()
@@ -47,9 +48,7 @@ public class UserStepsDefinition
   {
     clickAccountingMenu();
     selectBankAccountsOption();
-    clickAddBankAccount();
-    selectANZBank();
-    enterAccountDetails(ACC_NAME, ACC_TYPE, ACC_NUMBER);
+    addBankAccount(ACC_NAME, ACC_TYPE, ACC_NUMBER);
   }
 
   @Then("^Bank Account is added$")
@@ -70,21 +69,11 @@ public class UserStepsDefinition
    userDashboard.selectBankAccountsOption();
   }
 
-  private void clickAddBankAccount()
+  private void addBankAccount(String bname, String acctype, String accnumber)
   {
     bankAccounts = new BankAccounts(driver);
     bankAccounts.addBankAccount();
-  }
-
-  private void selectANZBank()
-  {
-    bankAccounts = new BankAccounts(driver);
     bankAccounts.selectANZBank();
-  }
-
-  private void enterAccountDetails(String bname, String acctype, String accnumber)
-  {
-    bankAccounts = new BankAccounts(driver);
     bankAccounts.enterDetails(bname, acctype, accnumber);
   }
 
