@@ -46,8 +46,7 @@ public class UserStepsDefinition
   @When("^User tries to add an ANZ bank account$")
   public void addANZBankAccount()
   {
-    clickAccountingMenu();
-    selectBankAccountsOption();
+    clickAccountingMenuAndSelectBanking();
     addBankAccount(ACC_NAME, ACC_TYPE, ACC_NUMBER);
   }
 
@@ -57,16 +56,11 @@ public class UserStepsDefinition
     verifyBankAccountIsAdded(ACC_NAME);
   }
 
-  private void clickAccountingMenu()
+  private void clickAccountingMenuAndSelectBanking()
   {
     userDashboard = new UserDashboard(driver);
     userDashboard.clickAccountingMenu();
-  }
-
-  private void selectBankAccountsOption()
-  {
-   userDashboard = new UserDashboard(driver);
-   userDashboard.selectBankAccountsOption();
+    userDashboard.selectBankAccountsOption();
   }
 
   private void addBankAccount(String bname, String acctype, String accnumber)
